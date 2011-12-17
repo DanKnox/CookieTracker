@@ -55,6 +55,6 @@ Now when a user makes a change to one of these form inputs, the change will be a
 
 ## Development
 
-If you have any questions or find any bugs, please post them on the [issue tracker](https://github.com/DanKnox/Settings-Cookies/issues). Feel free to fork the project and submit any changes you can think of. The tests are executed using rspec by running the `bundle` and `rake` commands in succession.
+If you have any questions or find any bugs, please post them on the [issue tracker](https://github.com/DanKnox/Settings-Cookies/issues). Feel free to fork the project and submit any changes you can think of. The tests are developed using Test::Unit and executed by running the `bundle` and `rake` commands.
 
 This gem is created and maintained by Dan Knox under the MIT license.
