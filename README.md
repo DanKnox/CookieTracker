@@ -1,6 +1,6 @@
 # Cookie Tracker Gem
 
-The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return. You can declare the default cookie lifetime options in an initializer or override them at runtime.
+The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return.
 
 ## Installation
 
@@ -55,6 +55,6 @@ Now when a user makes a change to one of these form inputs, the change will be a
 
 ## Development
 
-If you have any questions or find any bugs, please post them on the [issue tracker](https://github.com/DanKnox/Settings-Cookies/issues). Feel free to fork the project and submit any changes you can think of. The tests are executed using rspec by running the `bundle` and `rake` commands in succession.
+If you have any questions or find any bugs, please post them on the [issue tracker](https://github.com/DanKnox/Settings-Cookies/issues). Feel free to fork the project and submit any changes you can think of. The tests are developed using Test::Unit and executed by running the `bundle` and `rake` commands.
 
 This gem is created and maintained by Dan Knox under the MIT license.
