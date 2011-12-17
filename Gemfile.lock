@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cookie_tracker (1.0.0)
+    cookie_tracker (1.0.1.alpha)
       rails
 
 GEM
@@ -96,4 +96,5 @@ PLATFORMS
 DEPENDENCIES
   cookie_tracker!
   jquery-rails
+  rake
   sqlite3
