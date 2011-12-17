@@ -1,4 +1,4 @@
-# Cookie Tracker Gem
+# Cookie Tracker Gem [![Build Status](https://secure.travis-ci.org/DanKnox/cookie_tracker.png)](https://secure.travis-ci.org/DanKnox/cookie_tracker.png)
 
 The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return.
 
