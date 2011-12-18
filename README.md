@@ -20,16 +20,16 @@ You can place the `initialize_cookie_tracker` method inside a `before_filter` me
 
 ````ruby
 ArticlesController < ApplicationController::Base
-	before_filter :define_cookie_tracker
+  before_filter :define_cookie_tracker
 	
-	def index
-	end
+  def index
+  end
 	
-	private
+  private
 	
-	def define_cookie_tracker
-	  initialize_cookie_tracker(:per_page => 10, :search_query => nil, :organize_by => 'author', :filter_by_month => nil)
-	end
+  def define_cookie_tracker
+    initialize_cookie_tracker(:per_page => 10, :search_query => nil, :organize_by => 'author', :filter_by_month => nil)
+  end
 end
 ````
 
