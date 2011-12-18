@@ -1,1 +1,8 @@
 ** RELEASING VERSION 1.0.0 **
+
+# Includes support for synchronizing cookies and instance variables
+
+** VERSION 1.2.0 **
+
+# Includes support for session store
+# Configuration options with an initializer
