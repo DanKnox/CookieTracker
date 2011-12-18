@@ -40,6 +40,8 @@ module Dummy
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
+    
+    config.cookie_tracker_expire_date = '1.hours.from_now'
   end
 end
 

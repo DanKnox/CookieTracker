@@ -1,6 +1,9 @@
 module CookieTracker
   # == Description
   # The ControllerAdditions module is mixed in to ActionController::Base providing the <tt>initialize_cookie_tracker</tt> instance method for use in your controllers.
+  # 
+  # The <tt>initialize_session_tracker</tt> method works identically to the <tt>initialize_cookie_tracker</tt> method but stores values in the session instead of cookies.
+  #
   # == Usage
   # To initialize the various cookies that you wish to track, execute the method in a before_filter call.
   #
@@ -28,10 +31,25 @@ module CookieTracker
   #
   module ControllerAdditions
     def initialize_cookie_tracker(parameters={})
+      expire_date   = CookieTracker.configuration[:cookie_expire_date] || 1.days.from_now
+      custom_domain = CookieTracker.configuration[:cookie_tracker_custom_domain] || nil
+      
       parameters.each do |setting,value|
         cookies[setting].nil? ? instance_variable_set("@#{setting}",value) : instance_variable_set("@#{setting}",cookies[setting])
         instance_variable_set("@#{setting}",params[setting].squish) unless params[setting].nil?
-        cookies[setting] = instance_variable_get("@#{setting}")
+        cookies[setting] = {
+          :value   => instance_variable_get("@#{setting}"),
+          :expires => expire_date,
+          :domain  => custom_domain
+        }
+      end
+    end
+    
+    def initialize_session_tracker(parameters={})
+      parameters.each do |setting,value|
+        session[setting].nil? ? instance_variable_set("@#{setting}",value) : instance_variable_set("@#{setting}",session[setting])
+        instance_variable_set("@#{setting}",params[setting].squish) unless params[setting].nil?
+        session[setting] = instance_variable_get("@#{setting}")
       end
     end
   end

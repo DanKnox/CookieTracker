@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    cookie_tracker (1.0.1.alpha)
+    cookie_tracker (1.2.0)
       rails
 
 GEM

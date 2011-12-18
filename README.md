@@ -1,6 +1,6 @@
 # Cookie Tracker Gem [![Build Status](https://secure.travis-ci.org/DanKnox/CookieTracker.png)](https://secure.travis-ci.org/DanKnox/CookieTracker.png)
 
-The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return.
+The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return. CookieTracker also supports storing the values in the session store if that's what you prefer. You can override the default cookie options by creating an initializer.
 
 Here is a link to the rubydoc documentation if you are interested: [Rdoc Documentation](http://rubydoc.info/github/DanKnox/CookieTracker/master/frames)
 ## Installation
@@ -12,6 +12,23 @@ gem 'cookie_tracker'
 ````
 
 **Requires Ruby 1.9.2 or later.**
+
+## Configuration
+
+You can override the default options for the cookie creation (lifetime and domain) by creating an initializer file in your application's `config/initializers/` directory:
+
+````ruby
+# /conf/initializers/cookie_store.rb
+#
+# Defaults:
+# :cookie_expire_date = 1.day.from_now
+# :custom_domain = nil
+
+CookieTracker.setup do |config|
+  config[:cookie_expire_date] = 1.year.from_now
+  config[:custom_domain]      = 'localhost'
+end
+````
 
 ## Usage
 
@@ -73,6 +90,25 @@ cookies[:per_page] == '15'
 => true
 cookies[:organize_by] == 'date'
 => true
+````
+
+If you prefer to use the session store instead of cookies, you can use the `initialize_session_tracker` method. The two methods function close to identically but persist your values in the appropriate locations.
+
+Example of using the session store:
+
+````ruby
+ArticlesController < ApplicationController::Base
+  before_filter :define_cookie_tracker
+	
+  def index
+  end
+	
+  private
+	
+  def define_cookie_tracker
+    initialize_session_tracker(:per_page => 10, :search_query => nil, :organize_by => 'author', :filter_by_month => nil)
+  end
+end
 ````
 
 You will get the most bang for your buck if you use these instance variables as the values for various configuration options in your views. Any time a user changes the option from a form or drop down menu, the cookie and instance variable will be updated accordingly:

@@ -11,11 +11,13 @@ Gem::Specification.new do |s|
   s.email       = ["dknox@threedotloft.com"]
   s.homepage    = "https://github.com/DanKnox/CookieTracker"
   s.summary     = "Easily synchronizes settings stored in cookies with instance variables of the same name available for use in controllers and views."
-  s.description = %q{The cookie_tracker gem allows you to declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each
-    parameter will be loaded into it's own instance variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically
-    be stored in the correct cookie and replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and 
-    custom display settings. If a user clicks off to another page on your site, their settings will be remembered when they return. You can declare the default cookie lifetime options in an initializer
-    or override them at runtime. }
+  s.description = %q{The cookie_tracker easily synchronizes settings stored in cookies with instance variables of the same name available for use in controllers and views. This gem allows you to
+    declare a hash of parameters along with default values that you wish to be loaded/stored in the user's cookies during each page load. Each parameter will be loaded into it's own instance 
+    variable of the same name for easy access in controllers and views. If the parameter is passed in the params[] hash, the new value will automatically be stored in the correct cookie and 
+    replace the old or default value. This makes it easy to track various options that a user can select on a page, such as items per page, search queries, and custom display settings. 
+    If a user clicks off to another page on your site, their settings will be remembered when they return. You can declare the default cookie lifetime options in an initializer
+    or override them at runtime. If you prefer to use the session store over the cookie jar, there is a method for that as well. You can override the default cookie options by creating an
+    initializer. Visit the github page https://github.com/DanKnox/CookieTracker }
     
   s.rubyforge_project = "cookie_tracker"
 
