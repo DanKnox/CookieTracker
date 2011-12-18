@@ -30,47 +30,48 @@ ArticlesController < ApplicationController::Base
 	def define_cookie_tracker
 	  initialize_cookie_tracker(:per_page => 10, :search_query => nil, :organize_by => 'author', :filter_by_month => nil)
 	end
+end
 ````
 
 Now you will have the following instance variables and cookies available in your controller and views:
 
 ````ruby
-	puts @per_page
-	=>10
-	puts @search_query
-	=>nil
-	@organize_by
-	=>'author'
-	@filter_by_month
-	=>nil
-	puts cookies[:per_page]
-	=>10
-	puts cookies[:search_query]
-	=>nil
-	puts cookies[:organize_by]
-	=>'author'
-	puts cookies[:filter_by_month]
-	=>nil
+puts @per_page
+=>10
+puts @search_query
+=>nil
+@organize_by
+=>'author'
+@filter_by_month
+=>nil
+puts cookies[:per_page]
+=>10
+puts cookies[:search_query]
+=>nil
+puts cookies[:organize_by]
+=>'author'
+puts cookies[:filter_by_month]
+=>nil
 ````
 
 CookieTracker will watch the <tt>params[]</tt> hash and update the cookies and instance variables when a parameter matching the cookie name is submitted.
 
 ````erb
-	Example Request:
-	get '/articles?per_page=15&organize_by=date'
+Example Request:
+get '/articles?per_page=15&organize_by=date'
 ````
 
 Now the instance variables and cookies will be updated in your controller and views:
 
 ````ruby
-	@per_page == '15'
-	=> true
-	@organize_by == 'date'
-	=> true
-	cookies[:per_page] == '15'
-	=> true
-	cookies[:organize_by] == 'date'
-	=> true
+@per_page == '15'
+=> true
+@organize_by == 'date'
+=> true
+cookies[:per_page] == '15'
+=> true
+cookies[:organize_by] == 'date'
+=> true
 ````
 
 You will get the most bang for your buck if you use these instance variables as the values for various configuration options in your views. Any time a user changes the option from a form or drop down menu, the cookie and instance variable will be updated accordingly:
