@@ -32,7 +32,7 @@ end
 
 ## Usage
 
-This gem supplies a class method available in your controllers named `initialize_cookie_tracker`
+This gem supplies an instance method available in your controllers named `initialize_cookie_tracker`
 
 You can place the `initialize_cookie_tracker` method inside a `before_filter` method call and pass it a hash containing the instance variables you would like set with the default values like so:
 
